@@ -18,16 +18,17 @@ public static class MauiProgram
         builder.Services.AddSingleton<DatabaseService>();
         builder.Services.AddSingleton<IAuthService, AuthService>();
 
-        builder.Services.AddSingleton<LoginPage>();
-        builder.Services.AddSingleton<HomePage>();
-        builder.Services.AddSingleton<RegisterPage>();
-        builder.Services.AddSingleton<AppointmentsPage>();
-        builder.Services.AddSingleton<CreateAppointmentPage>();
-        builder.Services.AddSingleton<AdminMecaniciPage>();
-
-        builder.Services.AddSingleton<AdminMecaniciPage>();
+        builder.Services.AddTransient<LoginPage>();
+        builder.Services.AddTransient<HomePage>();
+        builder.Services.AddTransient<RegisterPage>();
+        builder.Services.AddTransient<AppointmentsPage>();
+        builder.Services.AddTransient<CreateAppointmentPage>();
+        builder.Services.AddTransient<AdminMecaniciPage>();
         builder.Services.AddTransient<AddMecanicPage>();
         builder.Services.AddTransient<EditMecanicPage>();
+        builder.Services.AddTransient<EditAppointmentPage>();
+        builder.Services.AddTransient<MechanicDetailPage>();
+        builder.Services.AddTransient<LeaveReviewPage>();
 
         return builder.Build();
     }

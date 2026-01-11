@@ -9,7 +9,7 @@ namespace AutoServiceMobil.Services;
 
 public class DatabaseService
 {
-    private readonly SQLiteAsyncConnection _db;
+    private SQLiteAsyncConnection _db;
 
     public ObservableCollection<Serviciu> ListaServicii { get; set; } = new();
     public ObservableCollection<Mecanic> ListaMecanici { get; set; } = new();
@@ -18,37 +18,48 @@ public class DatabaseService
 
     public DatabaseService()
     {
+        InitializeAsync();
+    }
+
+    private async void InitializeAsync()
+    {
         var path = Path.Combine(FileSystem.AppDataDirectory, "autoservice.db");
         _db = new SQLiteAsyncConnection(path);
 
-        _db.CreateTableAsync<User>().Wait();
-        _db.CreateTableAsync<Serviciu>().Wait();
-        _db.CreateTableAsync<Mecanic>().Wait();
-        _db.CreateTableAsync<Programare>().Wait();
-        _db.CreateTableAsync<Review>().Wait();
+        await _db.CreateTableAsync<User>();
+        await _db.CreateTableAsync<Serviciu>();
+        await _db.CreateTableAsync<Mecanic>();
+        await _db.CreateTableAsync<Programare>();
+        await _db.CreateTableAsync<Review>();
 
-        CreateDefaultAdmin();
-        LoadAllData().Wait();
+        await CreateDefaultAdmin();
+        await LoadAllData();
     }
 
     private async Task LoadAllData()
     {
-        ListaServicii = new ObservableCollection<Serviciu>(await _db.Table<Serviciu>().ToListAsync());
-        ListaMecanici = new ObservableCollection<Mecanic>(await _db.Table<Mecanic>().ToListAsync());
-        ListaProgramari = new ObservableCollection<Programare>(await _db.Table<Programare>().ToListAsync());
-        ListaReviewuri = new ObservableCollection<Review>(await _db.Table<Review>().ToListAsync());
+        ListaServicii = new ObservableCollection<Serviciu>(
+            await _db.Table<Serviciu>().ToListAsync());
+
+        ListaMecanici = new ObservableCollection<Mecanic>(
+            await _db.Table<Mecanic>().ToListAsync());
+
+        ListaProgramari = new ObservableCollection<Programare>(
+            await _db.Table<Programare>().ToListAsync());
+
+        ListaReviewuri = new ObservableCollection<Review>(
+            await _db.Table<Review>().ToListAsync());
     }
 
-    private void CreateDefaultAdmin()
+    private async Task CreateDefaultAdmin()
     {
-        var admin = _db.Table<User>()
-                       .Where(u => u.Rol == "admin")
-                       .FirstOrDefaultAsync()
-                       .Result;
+        var admin = await _db.Table<User>()
+                             .Where(u => u.Rol == "admin")
+                             .FirstOrDefaultAsync();
 
         if (admin == null)
         {
-            _db.InsertAsync(new User
+            await _db.InsertAsync(new User
             {
                 Nume = "Admin",
                 Prenume = "Principal",
@@ -56,7 +67,7 @@ public class DatabaseService
                 Telefon = "0000000000",
                 Parola = "admin123",
                 Rol = "admin"
-            }).Wait();
+            });
         }
     }
 
@@ -81,10 +92,8 @@ public class DatabaseService
         ListaServicii.Add(s);
     }
 
-    public async Task UpdateServiciuAsync(Serviciu s)
-    {
-        await _db.UpdateAsync(s);
-    }
+    public Task UpdateServiciuAsync(Serviciu s)
+        => _db.UpdateAsync(s);
 
     public async Task DeleteServiciuAsync(Serviciu s)
     {
