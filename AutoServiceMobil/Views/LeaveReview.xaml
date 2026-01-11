@@ -1,0 +1,52 @@
+<ContentPage
+    x:Class="AutoServiceMobil.Views.LeaveReviewPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Lasă un review"
+    Shell.NavBarIsVisible="True">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Frame Padding="10" BorderColor="#ccc" CornerRadius="10">
+                <HorizontalStackLayout Spacing="15">
+
+                    <Image x:Name="MechanicImage"
+                           WidthRequest="80"
+                           HeightRequest="80"
+                           Aspect="AspectFill" />
+
+                    <VerticalStackLayout>
+                        <Label x:Name="MechanicName"
+                               FontAttributes="Bold"
+                               FontSize="20" />
+
+                        <Label x:Name="MechanicRating"
+                               FontSize="14"
+                               TextColor="Gray" />
+                    </VerticalStackLayout>
+
+                </HorizontalStackLayout>
+            </Frame>
+
+            <Label Text="Alege rating:" FontAttributes="Bold" />
+            <Picker x:Name="RatingPicker"
+                    Title="Rating"
+                    ItemsSource="{Binding Ratings}" />
+
+            <Label Text="Comentariu:" FontAttributes="Bold" />
+            <Editor x:Name="CommentEditor"
+                    HeightRequest="120"
+                    Placeholder="Scrie un comentariu..." />
+
+            <Button Text="Trimite review"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="50"
+                    Clicked="OnSubmitClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

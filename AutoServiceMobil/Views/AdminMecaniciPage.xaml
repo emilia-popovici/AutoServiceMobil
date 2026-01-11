@@ -1,0 +1,66 @@
+<ContentPage
+    x:Class="AutoServiceMobil.Views.AdminMecaniciPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Administrare Mecanici"
+    Shell.NavBarIsVisible="True">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Button Text="Adaugă mecanic"
+                BackgroundColor="#2196F3"
+                TextColor="White"
+                CornerRadius="8"
+                Clicked="OnAddMecanicClicked" />
+
+        <CollectionView x:Name="MechanicsList"
+                        SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="0,10" BorderColor="#CCCCCC">
+
+                        <HorizontalStackLayout Spacing="15">
+
+                            <Image Source="{Binding PozaUrl}"
+                                   WidthRequest="70"
+                                   HeightRequest="70"
+                                   Aspect="AspectFill" />
+
+                            <VerticalStackLayout>
+
+                                <Label Text="{Binding NumeComplet}"
+                                       FontAttributes="Bold"
+                                       FontSize="18" />
+
+                                <Label Text="{Binding RatingText}"
+                                       FontSize="14"
+                                       TextColor="Gray" />
+
+                                <HorizontalStackLayout Spacing="10" Margin="0,10,0,0">
+
+                                    <Button Text="Editează"
+                                            BackgroundColor="#FFC107"
+                                            TextColor="Black"
+                                            Clicked="OnEditClicked" />
+
+                                    <Button Text="Șterge"
+                                            BackgroundColor="#D32F2F"
+                                            TextColor="White"
+                                            Clicked="OnDeleteClicked" />
+
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+
+                        </HorizontalStackLayout>
+
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </VerticalStackLayout>
+
+</ContentPage>

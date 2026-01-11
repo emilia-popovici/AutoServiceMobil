@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AutoServiceMobil.Views.EditAppointmentPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:AutoServiceMobil.Models"
+    Title="Editează programare">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Serviciu"
+                   FontAttributes="Bold" />
+            <Picker x:Name="ServicePicker"
+                    Title="Alege serviciul"
+                    ItemsSource="{Binding Servicii}"
+                    ItemDisplayBinding="{Binding Nume}" />
+
+            <Label Text="Mecanic"
+                   FontAttributes="Bold" />
+            <Picker x:Name="MechanicPicker"
+                    Title="Alege mecanicul"
+                    ItemsSource="{Binding Mecanici}"
+                    ItemDisplayBinding="{Binding Nume}" />
+
+            <Label Text="Data"
+                   FontAttributes="Bold" />
+            <DatePicker x:Name="AppointmentDatePicker" />
+
+            <Label Text="Ora"
+                   FontAttributes="Bold" />
+            
+            <Picker x:Name="TimePicker"
+                    Title="Alege ora" />
+
+            <Button Text="Salvează modificările"
+                    BackgroundColor="#2196F3"
+                    TextColor="White"
+                    Clicked="OnSaveClicked" />
+
+            <Button Text="Renunță"
+                    BackgroundColor="LightGray"
+                    TextColor="Black"
+                    Clicked="OnCancelClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,31 @@
+<ContentPage
+    x:Class="AutoServiceMobil.Views.AddMecanicPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Adaugă mecanic"
+    Shell.NavBarIsVisible="True">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Entry x:Name="NumeEntry"
+               Placeholder="Nume" />
+
+        <Entry x:Name="PrenumeEntry"
+               Placeholder="Prenume" />
+
+        <Entry x:Name="PozaEntry"
+               Placeholder="URL poză" />
+
+        <Entry x:Name="RatingEntry"
+               Placeholder="Rating (0-5)"
+               Keyboard="Numeric" />
+
+        <Button Text="Salvează"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                CornerRadius="8"
+                Clicked="OnSaveClicked" />
+
+    </VerticalStackLayout>
+
+</ContentPage>

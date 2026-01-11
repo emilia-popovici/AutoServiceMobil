@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AutoServiceMobil.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Acasă">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="25">
+
+            <Label Text="Bine ai venit la AutoServiceMobil!"
+                   FontSize="24"
+                   HorizontalOptions="Center" />
+
+            <Button Text="Programează-te"
+                    Clicked="OnProgrameazaTeClicked"
+                    BackgroundColor="#1E88E5"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50" />
+
+            <Button Text="Mecanici"
+                    Clicked="OnMecaniciClicked"
+                    BackgroundColor="#43A047"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50" />
+
+            <Button Text="Programările mele"
+                    Clicked="OnAppointmentsClicked"
+                    BackgroundColor="#FB8C00"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50" />
+
+            <Button Text="Admin Mecanici"
+                    Clicked="OnAdminMecaniciClicked"
+                    BackgroundColor="#2196F3"
+                    TextColor="White"
+                    CornerRadius="8" />
+
+            <Button Text="Logout"
+                    Clicked="OnLogoutClicked"
+                    BackgroundColor="#E53935"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

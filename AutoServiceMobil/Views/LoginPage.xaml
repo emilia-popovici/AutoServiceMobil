@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AutoServiceMobil.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Autentificare">
+
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <Label Text="Autentificare"
+               FontSize="28"
+               HorizontalOptions="Center"
+               Margin="0,10,0,20" />
+
+        <Entry x:Name="EmailEntry"
+               Placeholder="Email"
+               Keyboard="Email"
+               ClearButtonVisibility="WhileEditing" />
+
+        <Entry x:Name="ParolaEntry"
+               Placeholder="Parola"
+               IsPassword="True"
+               ClearButtonVisibility="WhileEditing" />
+
+        <Button Text="Autentificare"
+                HeightRequest="50"
+                BackgroundColor="#1E88E5"
+                TextColor="White"
+                CornerRadius="10"
+                Clicked="OnLoginClicked" />
+
+        <Button Text="Nu ai cont? Creează unul"
+                BackgroundColor="Transparent"
+                TextColor="#1E88E5"
+                Clicked="OnRegisterRedirectClicked" />
+
+    </VerticalStackLayout>
+
+</ContentPage>

@@ -1,0 +1,69 @@
+<ContentPage
+    x:Class="AutoServiceMobil.Views.MechanicDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Detalii mecanic"
+    Shell.NavBarIsVisible="True">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Frame Padding="10" BorderColor="#ccc" CornerRadius="10">
+                <HorizontalStackLayout Spacing="15">
+
+                    <Image x:Name="MechanicImage"
+                           WidthRequest="100"
+                           HeightRequest="100"
+                           Aspect="AspectFill" />
+
+                    <VerticalStackLayout>
+                        <Label x:Name="MechanicName"
+                               FontAttributes="Bold"
+                               FontSize="22" />
+
+                        <Label x:Name="MechanicRating"
+                               FontSize="16"
+                               TextColor="Gray" />
+                    </VerticalStackLayout>
+
+                </HorizontalStackLayout>
+            </Frame>
+
+            <Button Text="Lasa un review"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="50"
+                    Clicked="OnLeaveReviewClicked" />
+
+            <Label Text="Review-uri:"
+                   FontAttributes="Bold"
+                   FontSize="18" />
+
+            <CollectionView x:Name="ReviewsList"
+                            SelectionMode="None">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="0,10" BorderColor="#ddd" CornerRadius="10">
+                            <VerticalStackLayout>
+
+                                <Label Text="{Binding Rating, StringFormat='Rating: {0}/5'}"
+                                       FontAttributes="Bold"
+                                       FontSize="16" />
+
+                                <Label Text="{Binding Comentariu}"
+                                       FontSize="14"
+                                       TextColor="Gray" />
+
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
